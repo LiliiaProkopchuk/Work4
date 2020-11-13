@@ -1,4 +1,5 @@
 @import "global";
+$hover-bg: #8f4a4a;
 
 header{
     padding: 100px 0 0 0;
@@ -69,6 +70,22 @@ header{
                                 left: -30px;
                             }
                         }
+                        &:hover{
+                            text-shadow:
+                            1px 1px 0 #303030,
+                            1px -1px 0 #303030,
+                            -1px 1px 0 #303030,
+                            -1px -1px 0 #303030;
+                            color: white;
+                            transition: all 1s;
+                            transform: none;
+                            &:before{
+                                text-shadow: none;
+                                box-shadow:
+                                6px 6px 7px #303030;
+                                transition: all 1s;
+                            }
+                        }
                     }
                 }
                 .header_burger{
@@ -129,6 +146,12 @@ header{
                             margin-left: 45px;
                             position: relative;
                             z-index: 2;
+                            &:hover{
+                                top:-2px;
+                                left:-3px;
+                                text-shadow: -4px -4px 0px #aada89;
+                                transition: 0.3s;
+                            }
                             @media screen and (max-width:767px){
                                 margin-top: 40px;
                                 font-size: 30px;
@@ -152,52 +175,52 @@ header{
             }
         }
     }
-    .picture{
-        height: 600px;
-        background-image: url(../img/top_img.jpg);
-        background-size: auto 100%;
-        background-position: center;
-        @media screen and (max-width:1400px){
-            height: 500px;
-        }
-        @media screen and (max-width:1000px){
-            height: 400px;
-        }
-        @media screen and (max-width:800px){
-            height: 300px;
-        }
-        @media screen and (max-width:600px){
-            height: 200px;
-        }
-        @media screen and (max-width:400px){
-            height: 150px;
-        }
+}
+.picture{
+    height: 600px;
+    background-image: url(../img/top_img.jpg);
+    background-size: auto 100%;
+    background-position: center;
+    @media screen and (max-width:1400px){
+        height: 500px;
     }
-    .info{
-        padding: 110px 0;
-        background-color: #fff;
-        @media screen and(max-width:500px){
-            padding: 40px 0;
-        }
-        .title{
-            max-width: 720px;
-            margin: 0 auto;
-        }
-        ul{
-            display: flex;
-            justify-content: space-evenly;
-            flex-wrap: wrap;
-            li{
-                max-width: 200px;
-                @media screen and(max-width:439px){
-                    max-width: 300px;
-                    padding-bottom: 30px;
-                }
-                img{
-                    display: block;
-                    margin: 0 auto;
-                    margin-bottom: 30px;
-                }
+    @media screen and (max-width:1000px){
+        height: 400px;
+    }
+    @media screen and (max-width:800px){
+        height: 300px;
+    }
+    @media screen and (max-width:600px){
+        height: 200px;
+    }
+    @media screen and (max-width:400px){
+        height: 150px;
+    }
+}
+.info{
+    padding: 110px 0;
+    background-color: #fff;
+    @media screen and(max-width:500px){
+        padding: 40px 0;
+    }
+    .title{
+        max-width: 720px;
+        margin: 0 auto;
+    }
+    ul{
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        li{
+            max-width: 200px;
+            @media screen and(max-width:439px){
+                max-width: 300px;
+                padding-bottom: 30px;
+            }
+            img{
+                display: block;
+                margin: 0 auto;
+                margin-bottom: 30px;
             }
         }
     }
@@ -419,6 +442,34 @@ header{
         padding: 20px 55px;
         width: auto;
         border-radius: 3px;
+        position: relative;
+        &:before {
+            position: absolute;
+            top: 0;
+            width: 0;
+            height:100%;
+            background: $hover-bg;
+            border-radius: 3px;
+            z-index: -1;
+            content: '';
+            left: 0;
+        }
+        &:hover{
+            transform: scale(1);
+        }
+        &:hover::before {
+            animation: bg-animation 0.6s 1;
+            animation-fill-mode: forwards;
+        }
+        @keyframes bg-animation {
+            0% {
+              width: 10%;
+            }
+              
+            100% {
+              width:100%;
+            }
+          }
         @media screen and(max-width:500px){
             padding: 20px;
         }
@@ -448,6 +499,19 @@ footer{
                     padding-top: 35px;
                     color: #fff;
                     position: relative;
+                    &:hover{
+                        text-shadow:
+                        -1px -1px #111,
+                        6px 6px 7px #5f5f5f,
+                        0 1px 0 #444;
+                        color: #222;
+                        &::before{
+                            text-shadow: none;
+                            box-shadow:
+                            6px 6px 7px #5f5f5f;
+                            transition: all 1s;
+                        }
+                    }
                     &::before{
                         content: "<L>";
                         position: absolute;
@@ -471,6 +535,10 @@ footer{
                 @media screen and (max-width:800px){
                     margin: 0 auto;
                     margin-top: 60px;
+                }
+                a:hover{
+                    cursor: pointer;
+                    transform: scale(1.1);
                 }
                 a.footer__mail, a.footer__phone{
                     font-weight: 600;
@@ -514,6 +582,9 @@ footer{
                 }
                 a{
                     color: #777777;
+                    &:hover{
+                        color: #fff;
+                    }
                 }
             }
         }
