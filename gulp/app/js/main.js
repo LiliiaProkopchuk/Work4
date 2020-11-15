@@ -5,4 +5,14 @@ $(document).ready(function () {
         $('body').toggleClass('lock');
     });
 
+    $("a.nav_link").click(function () {
+        $("html,body").animate({
+            scrollTop: $($(this).attr("href")).offset().top
+        }, {
+            duration: 2000,
+            aesing: 'swing'
+        });
+        return false;
+    });
+
 });
